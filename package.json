@@ -1,0 +1,19 @@
+{
+  "name": "restify-jwt-traversy",
+  "version": "1.0.0",
+  "description": "Aplicação simples para estudo das tecnologias NodeJS, JWT e restify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniotex/node-restify-jwt-authentication.git"
+  },
+  "author": "Antonio Tx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniotex/node-restify-jwt-authentication/issues"
+  },
+  "homepage": "https://github.com/antoniotex/node-restify-jwt-authentication#readme"
+}
