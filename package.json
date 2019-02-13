@@ -4,7 +4,8 @@
   "description": "Aplicação simples para estudo das tecnologias NodeJS, JWT e restify",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/antoniotex/node-restify-jwt-authentication/issues"
   },
-  "homepage": "https://github.com/antoniotex/node-restify-jwt-authentication#readme"
+  "homepage": "https://github.com/antoniotex/node-restify-jwt-authentication#readme",
+  "dependencies": {
+    "mongoose": "^5.4.11",
+    "mongoose-timestamp": "^0.6.0",
+    "restify": "^7.7.0",
+    "restify-errors": "^6.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
