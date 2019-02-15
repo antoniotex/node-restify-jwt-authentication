@@ -8,6 +8,9 @@ const server = restify.createServer()
 server.use(restify.plugins.bodyParser())
 
 server.listen(config.PORT, () => {
+    // Remove warning bugado
+    mongoose.set('useFindAndModify', false)
+
     mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true }, () => {
         console.log('MongoDB conectado!')
     })
