@@ -9,6 +9,8 @@ const server = restify.createServer()
 server.use(restify.plugins.bodyParser())
 
 // Protege rotas
+// Também posso proteger rotas individuais adicionando rjwt({secret: config.JWT_SECRET})
+// entre o nome da rota e a chamada de função nas respectivas rotas que quero proteger
 server.use(rjwt({ secret: config.JWT_SECRET }).unless({ path: ['/auth'] }))
 
 server.listen(config.PORT, () => {

@@ -9,9 +9,9 @@ exports.authenticate = (email, senha) => {
             const usuario = await Usuario.findOne({ email })
 
             // Teste de senha
-            bcrypt.compare(senha, usuario.senha, (erro, passou) => {
+            bcrypt.compare(senha, usuario.senha, (erro, senhaOK) => {
                if(erro) throw erro
-                if(passou){
+                if(senhaOK){
                     // Senha passou
                     resolve(usuario)
                 } else {
