@@ -13,6 +13,19 @@ module.exports = server => {
         }
     })
 
+    // Lista Cliente Único
+    server.get('/clientes/:id', async (req, res, next) => {
+        try {
+            const cliente = await Cliente.findById(req.params.id)
+            res.json(cliente)
+            next()
+        } catch(erro) {
+          return next(new erros.ResourceNotFoundError(
+              `Não existe cliente com o id ${req.params.id}`
+          ))  
+        }
+    })
+
     // Cadastra Cliente
     server.post('/clientes', async (req, res, next) => {
         if(!req.is('application/json')){
