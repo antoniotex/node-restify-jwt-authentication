@@ -22,5 +22,6 @@ db.on('erro', (erro) => console.log(erro))
 
 db.once('open', () => {
     require('./routes/clientes')(server)
+    require('./routes/usuarios')(server)
     console.log(`Servidor rodando na porta ${config.PORT}`)
 })
