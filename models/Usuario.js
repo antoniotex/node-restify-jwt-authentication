@@ -13,7 +13,7 @@ const UsuarioSchema = new Schema({
         required: true,
         trim: true
     },
-    passwoard: {
+    senha: {
         type: String,
         required: true
     }
