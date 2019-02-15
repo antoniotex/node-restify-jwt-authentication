@@ -2,6 +2,7 @@ const restify = require('restify')
 const mongoose = require('mongoose')
 const config = require('./config')
 const rjwt = require('restify-jwt-community')
+const path = require('path')
 
 const server = restify.createServer()
 
@@ -12,6 +13,16 @@ server.use(restify.plugins.bodyParser())
 // Também posso proteger rotas individuais adicionando rjwt({secret: config.JWT_SECRET})
 // entre o nome da rota e a chamada de função nas respectivas rotas que quero proteger
 server.use(rjwt({ secret: config.JWT_SECRET }).unless({ path: ['/auth'] }))
+
+// Serve static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    // Set static folder
+    app.use(express.static('client/build'))
+
+    app.get('*', (req, res) =>{
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 server.listen(config.PORT, () => {
     // Remove warning bugado
