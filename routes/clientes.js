@@ -48,4 +48,34 @@ module.exports = server => {
             return next(new erros.InternalError(erro.message))
         }
     })
+
+    // Atualiza Cliente
+    server.put('/clientes/:id', async (req, res, next) => {
+        if(!req.is('application/json')){
+            return new(new erros.InvalidContentError("Era esperado 'application/json'"))
+        }
+
+        try {
+            const cliente = await Cliente.findOneAndUpdate({ _id: req.params.id }, req.body)
+            res.send(200)
+            next()
+        }catch(erro){
+            return next(new erros.ResourceNotFoundError(
+                `Não existe cliente com o id ${req.params.id}`
+            ))  
+        }
+    })
+
+    // Deleta Cliente
+    server.del('/clientes/:id', async (req, res, next) => {
+        try {
+            const cliente = await Cliente.findOneAndRemove({ _id: req.params.id })
+            res.send(204)
+                next()
+        } catch(erro){
+            return next(new erros.ResourceNotFoundError(
+                `Não existe cliente com o id ${req.params.id}`
+            ))  
+        }
+    })
 }
