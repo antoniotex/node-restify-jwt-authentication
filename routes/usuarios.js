@@ -1,6 +1,7 @@
 const erros = require('restify-errors')
 const Usuario = require('../models/Usuario')
 const bcrypt = require('bcryptjs')
+const auth = require('../auth')
 
 module.exports = server => {
     // Registra Usuario
@@ -24,5 +25,17 @@ module.exports = server => {
                 }
             })
         })
+    })
+
+    server.post('/auth', async (req, res, next) => {
+        const { email, senha } = req.body
+
+        try{
+            // Usuario autenticado
+            const usuario = auth.authenticate(email, senha)
+        }catch(erro){
+            // Usuario não autorizado
+            return next(new erros.UnauthorizedError(erro))
+        }
     })
 }

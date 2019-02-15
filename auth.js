@@ -2,14 +2,14 @@ const bcrypt = require('bcryptjs')
 const mongoose = require('mongoosejs')
 const Usuario = mongoose.model('usuario')
 
-exports.authenticate = (email, password) => {
+exports.authenticate = (email, senha) => {
     return new Promise((resolve, reject) => {
         try{
             // Obter usuario pelo email
             const usuario = await Usuario.findOne({ email })
 
             // Teste de senha
-            bcrypt.compare(password, user.password, (erro, passou) => {
+            bcrypt.compare(senha, user.senha, (erro, passou) => {
                if(erro) throw erro
                 if(passou){
                     // Senha passou
